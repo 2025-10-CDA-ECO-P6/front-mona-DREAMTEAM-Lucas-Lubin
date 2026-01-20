@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Card({ animal }) {
     return (
         <Link href={`/animaux/${animal.id}`} className={styles.card}>
-            <img src={`http://localhost:1337/${animal.image}`} alt={animal.name} className={styles.photo} />
+            <img src={`http://localhost:1337${animal.image}`} alt={animal.name} className={styles.photo} />
 
             <div className={styles.info}>
                 <h3 className={styles.nom}>{animal.name}</h3>

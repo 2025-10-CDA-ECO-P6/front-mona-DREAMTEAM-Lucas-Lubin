@@ -9,7 +9,7 @@ export default function Treatment({ traitements = [] }) {
 
       <ul className={styles.list}>
         {traitements.map((t) => (
-          <TraitementItem key={t.id_traitement} t={t} />
+          <TraitementItem key={t.treatment_id} t={t} />
         ))}
       </ul>
     </div>
@@ -23,21 +23,26 @@ function TraitementItem({ t }) {
     <li className={styles.item}>
       <div className={styles.row}>
         <span className={styles.date}>
-          {t.date_debut} → {t.date_fin}
+          {t.treatment_date}
         </span>
         <br></br>
-        <span className={styles.name}>{t.nom_traitement}</span>
+        <span className={styles.name}>{t.treatment_title}</span>
       </div>
 
       {open && (
         <div className={styles.details}>
           <div className={styles.poso}>
-            • Posologie : <strong>{t.posologie}</strong>
+            • Categorie : <strong>{t.treatment_category}</strong>
           </div>
 
-          {t.remarque && (
+          {t.treatment_diagnostic && (
             <div className={styles.comment}>
-              • Remarque : <strong>{t.remarque}</strong>
+              • Diagnostique : <strong>{t.treatment_diagnostic}</strong>
+            </div>
+          )}
+          {t.treatment_description && (
+            <div className={styles.poso}>
+              • Commentaire : <strong>{t.treatment_description}</strong>
             </div>
           )}
         </div>

@@ -9,7 +9,7 @@ export default function Consultation({ consultations = [] }) {
 
       <ul className={styles.list}>
         {consultations.map((c) => (
-          <ConsultItem key={c.id_visite} c={c} />
+          <ConsultItem key={c.appointment_id} c={c} />
         ))}
       </ul>
     </div>
@@ -22,24 +22,24 @@ function ConsultItem({ c }) {
   return (
     <li className={styles.item}>
       <div className={styles.row}>
-        <span className={styles.date}>{c.date_visite} :</span>
-        <span className={styles.motif}>{c.motif}</span>
+        <span className={styles.date}>{c.appointment_date} :</span>
+        <span className={styles.motif}>{c.appointment_reason}</span>
       </div>
 
       {open && (
         <div className={styles.details}>
-          <div>
+          {/* <div>
             <strong>Diagnostic :</strong> {c.diagnostic}
-          </div>
+          </div> */}
 
-          {c.observation && (
+          {c.appointment_status && (
             <div className={styles.observation}>
-              <strong>Observation :</strong> {c.observation}
+              <strong>Statut :</strong> {c.appointment_status}
             </div>
           )}
 
           <div>
-            <strong>Vétérinaire :</strong> {c.veterinaire}
+            <strong>Vétérinaire :</strong> {c.appointment_veterinarian.veterinarian_firstname} {c.appointment_veterinarian.veterinarian_lastname}
           </div>
         </div>
       )}
